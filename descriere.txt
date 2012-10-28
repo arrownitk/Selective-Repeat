@@ -1,0 +1,40 @@
+ DUMITRESCU EVELINA Tema1 PC
+ 
+ 
+ Am ales sa implementez un protocol cu fereastra glisanta de tip selective repeat. 
+ Atat senderul, cat si receiverul mentin cate o fereastra de numere de secenta.
+ Receiverul are un tampon rezervat pebntru fiecare numar de secventa din cadrul feresteri .
+ Fiecare tampon are un bit asociat care spune daca tamponul e plin sau gol,
+ De fiecare data cand se primeste un cadru numarul de secvneta este verificatd e functia between
+ pentru a vedea daca face parte din fereatra. 
+ Daca da si daca nu a fost deja receptionat, este acceptat si memorat.
+ Senderul retine in buffer pachetele trimise, dar pentru care nu a primit confirmare.
+ Cele 2 buffere sunt egale cu (MAX_SEQ+1)/2.
+ In cazul in care parametrul window din receiver este diferit de zero, 
+ dimensiunea bufferului este egala cu minimul dintre parametrul window al rceiverului si dimensiunea ferestrei senderului.
+ Dupa sosirea undei secvnete de cadru de date etse pornit este pornit un contor de timp.
+ Daca pana la expirarea contorului de timp nu a aparut trafic in sens invers este trimis un ack timeout.  
+ De fiecare data cand receptorul detecteaza ca pe parcursul trasmiterii a avut loc o eroare transmite un nak
+ (confirmare negativa).
+ Un astfel de cadru reprezeinta o cerere de retransmitere a cadrului specificat in nak.
+ Receptorul trimite NAK atunci cand 
+  1) a prmit un cadru modificat
+  2) alt cadru decat cel asteptat
+  
+  Structura unui mesaj este urmatoarea:
+	  - crc (2 octeti)
+	  - max_seq (2 octeti)
+	  - nume fisier
+	  - dimensiunea fisierului 
+	  - delay  
+	  -tip  -> 1 cadru initial
+	        -> 2 cadru de date
+	        -> 3 ack
+	        -> 4 nak  
+	
+  
+  Pentru implementarea protocolului am folosit pseudocodul din Tanenbaum 
+  si functiile pentru calculul crc-ului din laborator.
+  
+  
+
