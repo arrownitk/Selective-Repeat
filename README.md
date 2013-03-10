@@ -1,4 +1,4 @@
 Selective-Repeat
 ================
 
-Automatic detection and correction of misspelled words by using a dictionary of word frequencies Concepts used: dynamic programming and Levenstein distance
+Data link layer file transferring protocol ; implements the selective repeat sliding window protocol and it is designed for transmission environments that allow frame loss.
